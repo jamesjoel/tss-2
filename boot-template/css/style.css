@@ -1,0 +1,36 @@
+.text-green{
+    color: #3DC3B6;
+}
+.text-gray{
+    color: #C0C0C0;
+}
+.bg-green{
+    background-color: #3DC3B6;
+}
+.text-white{
+    color: #fff;
+}
+.navbar .nav .nav-item .nav-link:hover{
+    background-color: #216d66;
+}
+.bg-dark-green{
+    background-color: #216d66;
+}
+.slider{
+    min-height: 400px;
+    background-color: #319e93;
+}
+.btn-green{
+    background-color: #319e93;
+    color: #fff;
+}
+.border-green{
+    border-bottom : 3px solid #319e93;
+}
+#product-box .card{
+    transition: 1s;
+}
+#product-box .card:hover{
+    box-shadow: 0px 0px 15px #000;
+    cursor: pointer;
+}
