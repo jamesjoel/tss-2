@@ -1,27 +1,16 @@
 const express = require("express");
-const app = express();
+const app = express(); // call
+const route = require("./config/routes");
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/assets"));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
+// the .use() is a middleware which can call auto, when any other route call
+app.use(route); // all
 
-app.get("/", (req, res)=>{
-    res.render("pages/home");
-})
-app.get("/about", (req, res)=>{
-    res.render("pages/about");
-})
-app.get("/student", (req, res)=>{
-    res.render("pages/student");
-})
 
-app.post("/save", (req, res)=>{
-    console.log(req.body.name);
-    console.log(req.body.contact);
-})
 
 
 const port = process.env.PORT || 3000;

@@ -1,0 +1,49 @@
+<%- include("../includes/header") %>
+<div class="container my-4" style="min-height: 700px;">
+    <h1>Teacher Page</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="/teacher/<%= result._id ? result._id : '' %>" method="post">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="name" value="<%= result.name %>" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" value="<%= result.email %>" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input name="salary" value="<%= result.salary %>" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input name="age" value="<%= result.age %>" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="add" class="form-control"><%= result.address %></textarea>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <select name="city" class="form-control">
+                        <option>Select</option>
+                        <option <% if(result.city == "Indore"){ %> selected <% } %> >Indore</option>
+                        <option <% if(result.city == "Pune"){ %> selected <% } %>>Pune</option>
+                        <option <% if(result.city == "Delhi"){ %> selected <% } %>>Delhi</option>
+                        <option <% if(result.city == "Bhopal"){ %> selected <% } %>>Bhopal</option>
+                    </select>
+                </div>
+
+
+                <Br />
+                <input type="submit" value="<%= result._id ? 'Update' : 'Add' %>" class="btn btn-primary" />
+            </form>
+
+
+            
+
+        </div>
+    </div>
+</div>
+<%- include("../includes/footer") %>
