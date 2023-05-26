@@ -6,6 +6,7 @@ app.use("/about", require("../controllers/AboutController"));
 app.use("/teacher", require("../controllers/TeacherController"));
 app.use("/student", require("../controllers/StudentController"));
 app.use("/service", require("../controllers/ServiceController"));
+app.use("/city", require("../controllers/CityController"));
 
 
 

@@ -1,0 +1,49 @@
+<%- include('../includes/header') %>
+        <div class="container my-4" style="min-height: 700px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pagination">
+                        <li class="page-item <% if(currentpage-1 == 0){ %> disabled <% } %>">
+                            <a class="page-link" href="/city/<%= currentpage-1 %>">Prev</a>
+                        </li>
+                        <% for(var i = 1; i <= pages; i++){ %>
+                        <li class="page-item <% if(currentpage==i){ %> active <% } %>">
+                            <a class="page-link"  href="/city/<%= i %>"><%= i %></a>
+                        </li>
+                        <% } %>
+
+                        <li class="page-item <% if(currentpage == pages){ %> disabled <% } %>">
+                            <a class="page-link" href="/city/<%= parseInt(currentpage)+1 %>">Next</a>
+                        </li>
+                        
+                    </ul>
+
+                    <select class="form-control">
+                        <option>100</option>
+                        <option>200</option>
+                        <option>300</option>
+                        <option>500</option>
+                    </select>
+
+                    <table class="table table-dark table-striped table-hover my-4">
+                        <tr>
+                            <th>S.No.</th>
+                            <th>City Name</th>
+                            <th>State Name</th>
+                        </tr>
+                        <% result.forEach((city, index)=>{ %>
+                            <tr>
+                                <td><%= skip+index+1 %></td>
+                                <td><%= city.name %></td>
+                                <td><%= city.state %></td>
+                            </tr>
+                        <% }) %>
+
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+<%- include('../includes/footer') %>
+
+       

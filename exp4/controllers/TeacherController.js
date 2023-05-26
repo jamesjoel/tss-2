@@ -1,12 +1,14 @@
 const app = require("express").Router();
 const Teacher = require("../models/Teacher");
+const City = require("../models/City");
 const mongoose = require("mongoose");
 const objid = mongoose.Types.ObjectId;
 
 // :3000/tacher
-app.get("/", (req, res)=>{
+app.get("/", async (req, res)=>{
     var result = { name : "", email : "", salary : "", age : "", city : "", address : "" };
-    var obj = { result : result}
+    var cityresult = await City.find();
+    var obj = { result : result, city : cityresult };
     res.render("pages/teacher", obj);
 })
 
@@ -57,7 +59,8 @@ app.get("/detail/:a", async (req, res)=>{
 app.get("/edit/:a", async (req, res)=>{
     var x = req.params.a;
     var result = await Teacher.find({_id : x});
-    var obj = { result : result[0] };
+    var cityresult = await City.find();
+    var obj = { result : result[0], city : cityresult };
     res.render("pages/teacher", obj);
 })
 

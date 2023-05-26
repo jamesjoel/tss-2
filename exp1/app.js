@@ -48,3 +48,36 @@ app.listen(3000, ()=>{
     }
 
 */
+/*
+    Teacher.find((result1)=>{
+        Student.find((result2)=>{
+            User.find((result3)=>{
+                Product.find((result4)=>{
+                    res.render()
+                })
+            })
+        })
+    })
+    
+    ES - 6 ---- async await
+
+
+    async function getall()
+    {
+        var result1 = await Teacher.find();
+        var result2 = await Student.find();
+        var result3 = await User.find();
+        var result4 = await Product.find();
+
+    }
+
+
+
+    app.get("/", async (req, res)=>{
+
+        var result = await Teacher.find();  
+
+    })
+
+
+*/
