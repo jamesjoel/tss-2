@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import LoggedMenu from '../LoggedMenu/LoggedMenu';
+import UnLoggedMenu from '../UnLoggedMenu/UnLoggedMenu';
 
 const Headers = () => {
+    let [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            setIsLoggedIn(true);
+        }
+    }, [])
+
   return (
     <>
     <div className="humberger__menu__overlay"></div>
@@ -75,24 +85,13 @@ const Headers = () => {
                     </div>
                     <div className="col-lg-6 col-md-6">
                         <div className="header__top__right">
-                            <div className="header__top__right__social">
-                                <a href="#"><i className="fa fa-facebook"></i></a>
-                                <a href="#"><i className="fa fa-twitter"></i></a>
-                                <a href="#"><i className="fa fa-linkedin"></i></a>
-                                <a href="#"><i className="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div className="header__top__right__language">
-                                <img src="/assets/img/language.png" alt="" />
-                                <div>English</div>
-                                <span className="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
-                            <div className="header__top__right__auth">
-                                <a href="#"><i className="fa fa-user"></i> Login</a>
-                            </div>
+                            
+                            {
+                                isLoggedIn ? <LoggedMenu /> : <UnLoggedMenu />
+                            }                           
+
+
+
                         </div>
                     </div>
                 </div>
