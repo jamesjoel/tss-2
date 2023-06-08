@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-import {API} from '../../constents/ServerApi';
+import {API} from '../../../../constents/ServerApi';
 
 let loginSchema = Yup.object({
     email : Yup.string().email("Email id is Incorrect").required("Insert Your Email id"),
@@ -13,11 +13,11 @@ let loginSchema = Yup.object({
 const Loign = () => {
 
     let navigate = useNavigate();
-    useEffect(()=>{
-        if(localStorage.getItem("token")){
-            navigate("/profile")
-        }
-    }, [])
+    // useEffect(()=>{
+    //     if(localStorage.getItem("token")){
+    //         navigate("/profile")
+    //     }
+    // }, [])
 
 
     let [err, setErr] = useState(false);

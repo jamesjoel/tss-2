@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {API} from '../../constents/ServerApi'
+import {API} from '../../../../constents/ServerApi'
 import axios from 'axios'
 
 const About = () => {

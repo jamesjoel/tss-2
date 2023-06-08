@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom'
-import {API} from '../../constents/ServerApi';
+import {API} from '../../../../constents/ServerApi';
 
 let signupSchema = Yup.object({
     name : Yup.string().required("Insert Your Full Name"),

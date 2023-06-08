@@ -1,18 +1,17 @@
 import React from 'react'
 import AllRoutes from './routes/AllRoutes'
-import Headers from './components/Headers/Headers'
-import Footer from './components/Footer/Footer'
+import Headers from './modules/user/components/Headers/Headers'
+import Footer from './modules/user/components/Footer/Footer'
 
 const App = () => {
 
   
   return (
     <>
-        <Headers />
-            <div style={{minHeight : "700px"}}>
-                <AllRoutes />
-            </div>
-        <Footer />
+        
+        <AllRoutes />
+        
+        
     </>
   )
 }

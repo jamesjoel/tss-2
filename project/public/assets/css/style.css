@@ -459,6 +459,61 @@ ol {
 	padding: 5px 15px;
 }
 
+/* update by james */
+.header__menu ul li .header__menu__dropdown .header__menu__dropdown__inner {
+	position: absolute;
+	left: 180px !important;
+	top: 0px;
+	background: #222222;
+	width: 180px;
+	z-index: 9;
+	padding: 5px 0;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.header__menu ul li .header__menu__dropdown .header__menu__dropdown__inner li {
+	margin-right: 0;
+	display: block;
+}
+
+.header__menu ul li .header__menu__dropdown .header__menu__dropdown__inner li:hover>a {
+	color: #7fad39;
+}
+
+.header__menu ul li .header__menu__dropdown .header__menu__dropdown__inner li a {
+	text-transform: capitalize;
+	color: #ffffff;
+	font-weight: 400;
+	padding: 5px 15px;
+}
+
+
+.header__menu ul li ul li:hover .header__menu__dropdown__inner {
+	top: 0px;
+	opacity: 1;
+	visibility: visible;
+}
+/* update by james */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header__menu ul li a.active {
 	color: #7fad39;
 }

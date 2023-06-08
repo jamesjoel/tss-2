@@ -3,13 +3,22 @@ import { NavLink } from 'react-router-dom'
 import LoggedMenu from '../LoggedMenu/LoggedMenu';
 import UnLoggedMenu from '../UnLoggedMenu/UnLoggedMenu';
 
+import CategoryService from '../../../../services/CategoryService'
+
+
 const Headers = () => {
     let [isLoggedIn, setIsLoggedIn] = useState(false);
+    let [allCate, setAllCate] = useState([]);
 
     useEffect(()=>{
         if(localStorage.getItem("token")){
             setIsLoggedIn(true);
         }
+        let getAllCategory = async () =>{
+            let result = await CategoryService.GetAll();
+            setAllCate(result.info);
+          }
+          getAllCategory();
     }, [])
 
   return (
@@ -109,14 +118,47 @@ const Headers = () => {
                         <ul>
                             <li><NavLink to="/">Home</NavLink></li>
                             <li><NavLink to="/about">About</NavLink></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            {/* <li><a href="./shop-grid.html">Shop</a></li> */}
+                            {/* <li><a href="#">Pages</a>
                                 <ul className="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
+                            </li> */}
+
+
+
+                            <li><a href="#">Categories</a>
+                                <ul className="header__menu__dropdown">
+                                {
+                                    allCate.map(cate=>{
+                                        return(
+                                                <>
+                                                    <li><a href="./shop-details.html">{cate.name}</a>
+                                                        <ul className='header__menu__dropdown__inner'>
+                                                            {cate.subcategory.map(subcate=>{
+                                                                return(
+                                                                    <li><a href="./shoping-cart.html">{subcate.name}</a></li>
+                                                                )
+                                                                })
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                </>
+                                                )
+                                            })
+                                        }
+                                </ul>
+                                {/* <ul className="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a>
+                                    <ul className='header__menu__dropdown__inner'>
+                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                        <li><a href="./checkout.html">Check Out</a></li>
+                                    </ul>
+                                    </li>
+                                    
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul> */}
                             </li>
                             
                         </ul>
