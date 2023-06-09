@@ -3,6 +3,7 @@ import CategoryService from '../../../../services/CategoryService'
 
 const CategoryList = () => {
   let [allCate, setAllCate] = useState([]);
+  let [cate, setCate] = useState();
   useEffect(()=>{
     let getAllCategory = async () =>{
       let result = await CategoryService.GetAll();
@@ -11,6 +12,18 @@ const CategoryList = () => {
     getAllCategory();
     
   }, [])
+
+
+  let askDelete = (obj)=>{
+    setCate(obj);
+  }
+  let confDelete = async ()=>{
+    let result =await CategoryService.deleteCate(cate)
+    setAllCate((arr)=>{
+      return arr.filter(val=>val != cate);
+    })
+    
+  }
 
   return (
     <>
@@ -25,6 +38,7 @@ const CategoryList = () => {
                 <tr>
                   <th>S.No.</th>
                   <th>Category Name</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +48,8 @@ const CategoryList = () => {
                         <tr>
                           <td>{index+1}</td>
                           <td>{cate.name}</td>
+                          <td><button onClick={()=>askDelete(cate)} data-toggle="modal" data-target="#delModal" className='btn btn-sm btn-danger'>Delete</button></td>
+                          {/* <td><button onClick={askDelete} data-toggle="modal" data-target="#delModal" className='btn btn-sm btn-danger'>Delete</button></td> */}
                         </tr>
                       )
 
@@ -46,8 +62,99 @@ const CategoryList = () => {
         </div>
 
     </div>
+
+    <div id='delModal' className='modal fade'>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header"><h2>Delete</h2></div>
+          <div className="modal-body">
+            <p>Are You Sure Want to Delete <b>{cate ? cate.name : ''}</b> !</p>
+          </div>
+          <div className="modal-footer">
+            <button className='btn btn-danger' data-dismiss="modal" onClick={confDelete}>Delete</button>
+            <button className='btn btn-info' data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>      
+
+
+
+
     </>
   )
 }
 
 export default CategoryList
+
+/*
+JavaScript
+  Loop
+    for()
+    while()
+    do.... while()
+
+ES-6 (Array)
+  for of
+  for in
+
+  Array
+
+  forEach
+  map
+  reduce
+  filter
+
+  Array.forEach((value, indexd, currnet_arr, cbFn)=>{
+    console.log(x)
+  })
+
+
+  let NewArray = Array.map((value, index, currnet_arr, cbFn)=>{
+    return value+2;
+  })
+
+  let NewArray = Array.filter((value, index, currnet_arr, cbFn)=>{
+    return value < 20 && value > 10;
+  })
+
+
+  let NewArray = Array.filter(value=> value != 10);
+
+
+  Array = [4, 7, 10, 9, 3];
+
+  let ans = Array.reduce((acu, val) => acu < val ? acu : val);
+
+  let ans = Array.reduce((accumelator, value)=> accumelator+value);
+
+
+
+  let data1 =[
+    {
+      name : "rohit",
+      gender : "male"
+    },
+    {
+      name : "jaya",
+      gender : "female"
+    }
+  ]
+
+  let data2 = data1.map(value=>{
+    if(value.gender=="male"){
+      value.name = "Mr. "+value.name;
+    }
+    {
+      value.name = "Ms. "+value.name;
+    }
+    return value;
+  })
+
+
+
+
+
+
+
+*/

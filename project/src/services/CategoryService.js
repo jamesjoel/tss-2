@@ -12,6 +12,12 @@ let GetAll = async()=>{
     return result.data;
 }
 
+
+let deleteCate = async(obj)=>{
+    let result = await axios.delete(`${API}/category/${obj._id}`)
+    return result.data;
+}
+
 let AddSubCate = async (data)=>{
    
     let result = await axios.post(`${API}/category/subcategory`, data);
@@ -29,6 +35,6 @@ let Delete = (data)=>{
     return axios.post(`${API}/category`, formdata);
 }*/
 
-let exportObj = { Add, GetAll, AddSubCate };
+let exportObj = { Add, GetAll, AddSubCate, deleteCate };
 
 export default exportObj;

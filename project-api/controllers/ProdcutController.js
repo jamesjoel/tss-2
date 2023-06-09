@@ -22,25 +22,6 @@ app.put("/:id", async(req, res)=>{
 })
 
 
-
-
-
-
-
-
-
-app.post("/subcategory", async(req, res)=>{
-    // console.log(req.body);
-    // return;
-
-    let result = await Category.updateOne({name : req.body.category}, {$push : {subcategory : {name : req.body.name}}});
-    
-    res.send({success : true, info: result });
-})
-
-
-
-
 module.exports = app;
 
 /*

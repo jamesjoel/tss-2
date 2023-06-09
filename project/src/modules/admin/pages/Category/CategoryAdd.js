@@ -54,19 +54,8 @@ export default CategoryAdd
 
 
 /*
-    hello((data, err)=>{
-        if(err){
-
-        }
-        continue....
-    })
-
-    try{
-
-        let data = await hello();
-    }catch(err){
-
-
+    let Box = ()=>{
+        
     }
 
 
