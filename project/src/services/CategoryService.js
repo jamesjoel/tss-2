@@ -17,10 +17,19 @@ let deleteCate = async(obj)=>{
     let result = await axios.delete(`${API}/category/${obj._id}`)
     return result.data;
 }
+let deleteSubCate = async(obj, obj1)=>{
+    let result = await axios.delete(`${API}/category/subcate/${obj._id}/${obj1}`)
+    return result.data;
+}
 
 let AddSubCate = async (data)=>{
    
     let result = await axios.post(`${API}/category/subcategory`, data);
+    return result.data;
+}
+
+let getSubCate = async(cateid)=>{
+    let result = await axios.get(`${API}/category/subcate/${cateid}`);
     return result.data;
 }
 
@@ -35,6 +44,6 @@ let Delete = (data)=>{
     return axios.post(`${API}/category`, formdata);
 }*/
 
-let exportObj = { Add, GetAll, AddSubCate, deleteCate };
+let exportObj = { Add, GetAll, AddSubCate, deleteCate, getSubCate, deleteSubCate };
 
 export default exportObj;

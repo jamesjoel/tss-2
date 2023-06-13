@@ -10,6 +10,19 @@ app.get("/", async(req, res)=>{
     let result = await Category.find();
     res.send({success : true, info: result });
 })
+app.delete("/subcate/:subcateid/:cateid", async(req, res)=>{
+    // console.log(req.params.id);
+    let sid = req.params.subcateid;
+    let cid = req.params.cateid;
+
+    let result = await Category.findOneAndUpdate(
+            { _id : cid }, 
+            { $pull : { subcategory : {_id : sid }}}
+        )
+     res.send({success : true, info: result });
+
+})
+
 app.delete("/:id", async(req, res)=>{
     let id = req.params.id;
     let result = await Category.deleteMany({ _id : id })
@@ -18,6 +31,13 @@ app.delete("/:id", async(req, res)=>{
 app.put("/:id", async(req, res)=>{
     let id = req.params.id;
     let result = await Category.updateMany({ _id : id }, req.body)
+    res.send({success : true, info: result });
+})
+
+app.get("/subcate/:cateid", async(req, res)=>{
+    // console.log(req.params.catename);
+    let a = req.params.cateid;
+    let result = await Category.find({ _id : a });
     res.send({success : true, info: result });
 })
 

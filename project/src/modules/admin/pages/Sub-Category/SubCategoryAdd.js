@@ -42,8 +42,8 @@ const SubCategoryAdd = () => {
                 <h4 className='text-center'>Add New Sub-Category</h4>
                 <div className='form-group'>
                     <label>Select Category</label>
-                    <select className='form-control' name='category' onChange={handleChange}>
-                        <option>Select</option>
+                    <select className={'form-control ' + (errors.category && touched.category ? 'is-invalid' : '')} name='category' onChange={handleChange}>
+                        <option value="">Select</option>
                         {
                             allCate.map(cate=><option>{cate.name}</option>)
                         }
