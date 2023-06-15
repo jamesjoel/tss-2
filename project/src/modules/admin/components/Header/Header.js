@@ -12,6 +12,14 @@ const Header = () => {
       <NavLink className="nav-link" to="/admin">Dashboard</NavLink>
     </li>
     <li className="nav-item dropdown">
+      <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="/admin/product">Product</NavLink>
+      <div className="dropdown-menu">
+
+      <NavLink className="dropdown-item" to="/admin/product/list">List</NavLink>
+      <NavLink className="dropdown-item" to="/admin/product/add">Add</NavLink>
+      </div>
+    </li>
+    <li className="nav-item dropdown">
       <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="/admin/category">Category</NavLink>
       <div className="dropdown-menu">
 

@@ -35,12 +35,12 @@ const Signup = () => {
     }, [])
 
 
-    let { handleSubmit, handleChange, errors, touched } = useFormik({
+    let { handleSubmit, handleChange, errors, touched, values } = useFormik({
 
         validationSchema : signupSchema,
 
         initialValues : { 
-                        name : "", 
+                        name : "James", 
                         email : "", 
                         password : "", 
                         repass : "", 
@@ -49,6 +49,7 @@ const Signup = () => {
                         city : "", 
                         contact : "" 
                 },
+        enableReinitialize : true,
         onSubmit : (formdata)=>{
             axios.post(`${API}/user/signup`, formdata).then((result, err)=>{
                 // console.log(result);
@@ -72,7 +73,7 @@ const Signup = () => {
                 <h4 className='text-center'>User Registration</h4>
                 <div className='form-group'>
                     <label>Name</label>
-                    <input type='text' name='name' onChange={handleChange} className={'form-control ' + (errors.name && touched.name ? 'is-invalid' : '')}/>
+                    <input type='text'  name='name' onChange={handleChange} className={'form-control ' + (errors.name && touched.name ? 'is-invalid' : '')}/>
                     <small className='text-danger'>
                         { errors.name && touched.name ? errors.name : '' }
                     </small>

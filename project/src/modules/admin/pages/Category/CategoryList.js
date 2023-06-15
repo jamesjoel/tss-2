@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import CategoryService from '../../../../services/CategoryService'
+import { useNavigate } from 'react-router-dom'
 
 const CategoryList = () => {
   let [allCate, setAllCate] = useState([]);
   let [cate, setCate] = useState();
+  let navigate = useNavigate();
   useEffect(()=>{
     let getAllCategory = async () =>{
       let result = await CategoryService.GetAll();
@@ -25,6 +27,11 @@ const CategoryList = () => {
     
   }
 
+  let askEdit = (obj)=>{
+    // console.log(obj);
+    let id = obj._id;
+    navigate(`/admin/category/edit/${id}`);
+  }
   return (
     <>
       <div className="container my-5">
@@ -38,6 +45,7 @@ const CategoryList = () => {
                 <tr>
                   <th>S.No.</th>
                   <th>Category Name</th>
+                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -48,6 +56,7 @@ const CategoryList = () => {
                         <tr>
                           <td>{index+1}</td>
                           <td>{cate.name}</td>
+                          <td><button onClick={()=>askEdit(cate)} className='btn btn-sm btn-info'>Edit</button></td>
                           <td><button onClick={()=>askDelete(cate)} data-toggle="modal" data-target="#delModal" className='btn btn-sm btn-danger'>Delete</button></td>
                           {/* <td><button onClick={askDelete} data-toggle="modal" data-target="#delModal" className='btn btn-sm btn-danger'>Delete</button></td> */}
                         </tr>

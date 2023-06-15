@@ -10,6 +10,17 @@ app.get("/", async(req, res)=>{
     let result = await Category.find();
     res.send({success : true, info: result });
 })
+app.get("/subcate/:cateid", async(req, res)=>{
+    // console.log(req.params.catename);
+    let a = req.params.cateid;
+    let result = await Category.find({ _id : a });
+    res.send({success : true, info: result });
+})
+// app.get("/:id", async (req, res)=>{
+//     let result = await Category.find({ _id : req.params.id});
+//     res.send({success : true, info: result[0] });
+// })
+
 app.delete("/subcate/:subcateid/:cateid", async(req, res)=>{
     // console.log(req.params.id);
     let sid = req.params.subcateid;
@@ -34,12 +45,7 @@ app.put("/:id", async(req, res)=>{
     res.send({success : true, info: result });
 })
 
-app.get("/subcate/:cateid", async(req, res)=>{
-    // console.log(req.params.catename);
-    let a = req.params.cateid;
-    let result = await Category.find({ _id : a });
-    res.send({success : true, info: result });
-})
+
 
 
 

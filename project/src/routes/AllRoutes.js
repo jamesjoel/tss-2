@@ -20,6 +20,8 @@ import CategoryList from '../modules/admin/pages/Category/CategoryList'
 import CategoryAdd from '../modules/admin/pages/Category/CategoryAdd'
 import SubCategoryList from '../modules/admin/pages/Sub-Category/SubCategoryList'
 import SubCategoryAdd from '../modules/admin/pages/Sub-Category/SubCategoryAdd'
+import ProductAdd from '../modules/admin/pages/Products/Add'
+import ProductList from '../modules/admin/pages/Products/List'
 
 const AllRoutes = () => {
 
@@ -56,8 +58,11 @@ const AllRoutes = () => {
             */}
             <Route path='admin' element={<AdminLayout />}>
                 <Route path='' element={<Dashboard />} />
+                <Route path='product/list' element={<ProductList />} />
+                <Route path='product/add' element={<ProductAdd />} />
                 <Route path='category/list' element={<CategoryList />} />
                 <Route path='category/add' element={<CategoryAdd />} />
+                <Route path='category/edit/:id' element={<CategoryAdd />} />
                 <Route path='subcategory/list' element={<SubCategoryList />} />
                 <Route path='subcategory/add' element={<SubCategoryAdd />} />
             </Route>

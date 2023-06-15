@@ -25,7 +25,7 @@ const Loign = () => {
    
     let {handleSubmit, handleChange, errors, touched} = useFormik({
         validationSchema : loginSchema,
-        initialValues : { email : "", password : ""},
+        initialValues : { email : "hello", password : ""},
         onSubmit : (formdata)=>{
             axios.post(`${API}/user/auth`, formdata).then(result=>{
                 
