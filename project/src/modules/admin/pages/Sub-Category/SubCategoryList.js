@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import CategoryService from '../../../../services/CategoryService'
+import Delete from '../../components/Delete/Delete';
 
 const SubCategoryList = () => {
     let counter = 0;
@@ -19,6 +20,7 @@ const SubCategoryList = () => {
   }, [])
 
   let getSubCate = async (e)=>{
+    // console.log(e.target[e.target.selectedIndex].text);
       let a = e.target.value;
       
     setSelectedCate(a);
@@ -86,20 +88,7 @@ const SubCategoryList = () => {
             </div>
         </div>
     </div>
-    <div id='delModal' className='modal fade'>
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header"><h2>Delete</h2></div>
-          <div className="modal-body">
-            <p>Are You Sure Want to Delete <b>{cate ? cate.name : ''}</b> !</p>
-          </div>
-          <div className="modal-footer">
-            <button className='btn btn-danger' data-dismiss="modal" onClick={confDelete}>Delete</button>
-            <button className='btn btn-info' data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div> 
+    <Delete info={cate} confDelete={confDelete}/>
     </>
   )
 }

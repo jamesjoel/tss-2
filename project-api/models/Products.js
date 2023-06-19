@@ -9,7 +9,8 @@ const ProductSchema = mongoose.Schema({
     subcategory : mongoose.ObjectId,
     quantity : Number,
     detail : String,
-    discount : Number
+    discount : Number,
+    image : String
 })
 
 module.exports = mongoose.model("product", ProductSchema);

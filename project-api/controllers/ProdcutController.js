@@ -1,9 +1,21 @@
 const app = require("express").Router();
 const Product = require("../models/Products")
+const path = require("path");
 
 app.post("/", async(req, res)=>{
-    let result = await Product.create(req.body);
-    res.send({success : true, info: result });
+    // console.log(JSON.parse(req.body.data));
+    // console.log(req.files.file);
+    let formdata = JSON.parse(req.body.data);
+    let file = req.files.file;
+
+    formdata.image = file.name;
+
+    file.mv(path.resolve()+"/assets/upload/"+file.name, async (err)=>{
+
+        let result = await Product.create(formdata);
+        res.send({success : true, info: result });
+    });
+    
 })
 
 app.get("/", async(req, res)=>{
@@ -25,10 +37,14 @@ app.put("/:id", async(req, res)=>{
 module.exports = app;
 
 /*
+{
+    name : "rohit",
+    age : 25
+}
 
 
-        });
-    });
-});
+'{ "name" : "rohit", "age" : "25"}'
+
+
 
 */
