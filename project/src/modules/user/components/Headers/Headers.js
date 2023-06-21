@@ -134,11 +134,11 @@ const Headers = () => {
                                     allCate.map(cate=>{
                                         return(
                                                 <>
-                                                    <li><a href="./shop-details.html">{cate.name}</a>
+                                                    <li><NavLink to={`/category/${cate.name}`}>{cate.name}</NavLink>
                                                         <ul className='header__menu__dropdown__inner'>
                                                             {cate.subcategory.map(subcate=>{
                                                                 return(
-                                                                    <li><a href="./shoping-cart.html">{subcate.name}</a></li>
+                                                                    <li><NavLink to={`/category/${cate.name}/${subcate.name}`}>{subcate.name}</NavLink></li>
                                                                 )
                                                                 })
                                                             }

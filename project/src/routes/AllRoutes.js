@@ -50,6 +50,8 @@ const AllRoutes = () => {
               <Route path='about' element={<About />} />
               <Route path='profile' element={<Profile />} />
               <Route path='logout' element={<Logout />} />
+              <Route path='category/:name' element={<Home />} />
+              <Route path='category/:name/:subcate' element={<Home />} />
             </Route>
 
             {/* 
@@ -99,26 +101,16 @@ let AdminLayout = ()=>{
 
 export default AllRoutes
 
+
+
 /*
-  <Route path="about" element={<Demo />}>
-    <Route element={<About />} >
-      <Route element={<Contact />} />
-    </Route>
-  </Route>
+Parametrized URL --- /about/rohit/25
 
 
-  return(
-    <>
-      <h1>Hello</h1>
-      <Outlet />
-    </>
-  )
+----- /about/info/more
 
-  return (
-    <h1>This About Page</h1>
-    <Outlet/>
-  )
+Route
 
-
+to="about/:a/:b"
 
 */

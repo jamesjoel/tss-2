@@ -22,4 +22,16 @@ let GetOne = async (id)=>{
     return result.data;
 }
 
-export default { Add, Update, Delete, GetOne, GetAll };
+let GetAllByCategory = async (catename)=>{
+    // localhost:3001/api/product/category/Electronic
+    let result = await axios.get(`${API}/product/category/${catename}`);
+    return result.data;
+}
+let GetAllBySubCategory = async (catename, subcatename)=>{
+    // localhost:3001/api/product/category/Electronic
+    let result = await axios.get(`${API}/product/subcategory/${catename}/${subcatename}`);
+    return result.data;
+}
+
+
+export default { Add, Update, Delete, GetOne, GetAll, GetAllByCategory, GetAllBySubCategory };
