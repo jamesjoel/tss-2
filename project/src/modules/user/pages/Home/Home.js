@@ -34,7 +34,7 @@ const Home = () => {
         <section className="featured spad">
         <div className="container">
            
-            <div className="row featured__filter">
+            <div className="row">
                {
                 productArr.map(x=><ProductBox key={x._id} data={x}/>)
                 

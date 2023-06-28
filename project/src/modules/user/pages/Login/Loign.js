@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import {API} from '../../../../constents/ServerApi';
+import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
 
 let loginSchema = Yup.object({
     email : Yup.string().email("Email id is Incorrect").required("Insert Your Email id"),
@@ -13,6 +14,7 @@ let loginSchema = Yup.object({
 const Loign = () => {
 
     let navigate = useNavigate();
+    let cartItem = useSelector(state=>state);
     // useEffect(()=>{
     //     if(localStorage.getItem("token")){
     //         navigate("/profile")
@@ -26,14 +28,14 @@ const Loign = () => {
     let {handleSubmit, handleChange, errors, touched} = useFormik({
         validationSchema : loginSchema,
         initialValues : { email : "hello", password : ""},
-        onSubmit : (formdata)=>{
+        onSubmit :(formdata)=>{
             axios.post(`${API}/user/auth`, formdata).then(result=>{
                 
                 if(result.data.success){
                     let token = result.data.token;
                     localStorage.setItem("token", token);
                     navigate("/");
-                    
+                                       
                 }else{
                     if(result.data.errType == 1){
                         setErr(true);

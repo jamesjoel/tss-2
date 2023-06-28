@@ -3,12 +3,15 @@ import { NavLink } from 'react-router-dom'
 import LoggedMenu from '../LoggedMenu/LoggedMenu';
 import UnLoggedMenu from '../UnLoggedMenu/UnLoggedMenu';
 
+import { useSelector } from 'react-redux'
 import CategoryService from '../../../../services/CategoryService'
 
 
 const Headers = () => {
     let [isLoggedIn, setIsLoggedIn] = useState(false);
     let [allCate, setAllCate] = useState([]);
+
+    let cart = useSelector(state=>state);
 
     useEffect(()=>{
         if(localStorage.getItem("token")){
@@ -167,8 +170,8 @@ const Headers = () => {
                 <div className="col-lg-3">
                     <div className="header__cart">
                         <ul>
-                            <li><a href="#"><i className="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i className="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            
+                            <li><NavLink to="/mycart"><i className="fa fa-shopping-bag"></i> <span>{cart.length}</span></NavLink></li>
                         </ul>
                         <div className="header__cart__price">item: <span>$150.00</span></div>
                     </div>

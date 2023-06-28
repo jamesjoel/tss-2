@@ -22,6 +22,7 @@ import SubCategoryList from '../modules/admin/pages/Sub-Category/SubCategoryList
 import SubCategoryAdd from '../modules/admin/pages/Sub-Category/SubCategoryAdd'
 import ProductAdd from '../modules/admin/pages/Products/Add'
 import ProductList from '../modules/admin/pages/Products/List'
+import MyCart from '../modules/user/pages/MyCart/MyCart'
 
 const AllRoutes = () => {
 
@@ -50,6 +51,7 @@ const AllRoutes = () => {
               <Route path='about' element={<About />} />
               <Route path='profile' element={<Profile />} />
               <Route path='logout' element={<Logout />} />
+              <Route path='mycart' element={<MyCart />} />
               <Route path='category/:name' element={<Home />} />
               <Route path='category/:name/:subcate' element={<Home />} />
             </Route>

@@ -1,15 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { add } from '../../../../redux/CartSlice'
+
 // { data : }
 const ProductBox = ({ data }) => {
+    let disp = useDispatch();
+    
+    let navigate = useNavigate();
   return (
     <>
+    
         <div className="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
                     <div className="featured__item">
                         <div className="featured__item__pic set-bg" data-setbg="/assets/img/featured/feature-2.jpg" style={{backgroundImage : `url(http://localhost:3001/upload/${data.image})`}}>
                             <ul className="featured__item__pic__hover">
-                                <li><a href="#"><i className="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i className="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i className="fa fa-shopping-cart"></i></a></li>
+                                <li><button className='btn btn-dark' onClick={()=>disp(add(data))}><i className="fa fa-shopping-cart"></i></button></li>
                             </ul>
                         </div>
                         <div className="featured__item__text">
@@ -20,7 +26,11 @@ const ProductBox = ({ data }) => {
                         </div>
                     </div>
                 </div>
+
+                
+               
     </>
+
   )
 }
 

@@ -7,6 +7,7 @@ app.use("/api/city", require("../controllers/CityController"));
 app.use("/api/user/profile", require("../controllers/ProfileController"));
 app.use("/api/category", require("../controllers/CategoryController"));
 app.use("/api/product", require("../controllers/ProdcutController"));
+app.use("/api/cart", require("../controllers/CartController"));
 
 
 module.exports = app;
