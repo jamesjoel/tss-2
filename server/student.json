@@ -1,3 +1,19 @@
 {
-  "student": []
+  "student": [
+    {
+      "name": "aman",
+      "age": "20",
+      "id": 3
+    },
+    {
+      "name": "vikas",
+      "age": "25",
+      "id": 4
+    },
+    {
+      "name": "dinesh",
+      "age": "25",
+      "id": 5
+    }
+  ]
 }

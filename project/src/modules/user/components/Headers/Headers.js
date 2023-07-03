@@ -3,19 +3,25 @@ import { NavLink } from 'react-router-dom'
 import LoggedMenu from '../LoggedMenu/LoggedMenu';
 import UnLoggedMenu from '../UnLoggedMenu/UnLoggedMenu';
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { loggedIn } from '../../../../redux/UserAuthSlice'
 import CategoryService from '../../../../services/CategoryService'
 
 
-const Headers = () => {
-    let [isLoggedIn, setIsLoggedIn] = useState(false);
-    let [allCate, setAllCate] = useState([]);
 
-    let cart = useSelector(state=>state);
+
+const Headers = () => {
+   
+    let [allCate, setAllCate] = useState([]);
+    let disp = useDispatch();
+    let cart = useSelector(state=>state.CartSlice);
+    
 
     useEffect(()=>{
         if(localStorage.getItem("token")){
-            setIsLoggedIn(true);
+
+            disp(loggedIn());
+            // setIsLoggedIn(true);
         }
         let getAllCategory = async () =>{
             let result = await CategoryService.GetAll();
@@ -23,6 +29,8 @@ const Headers = () => {
           }
           getAllCategory();
     }, [])
+
+    let isLoggedIn = useSelector(state=>state.UserAuthSlice);
 
   return (
     <>
@@ -187,3 +195,16 @@ const Headers = () => {
 }
 
 export default Headers
+
+
+/*
+
+    ["red", "green", "red"]
+
+    red ---- 3
+    green ---2 
+    yellow - 1
+    black - 1
+
+*/
+

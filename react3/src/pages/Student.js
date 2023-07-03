@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { delStu, addStu } from '../redux/StudentSlice'
+import { delStu, addStu, editStu } from '../redux/StudentSlice'
 
 
 
@@ -16,7 +16,17 @@ const Student = () => {
     }
 
     let add = ()=>{
-        disp(addStu(stu));
+        if(stu.id){
+            disp(editStu(stu));
+        }else{
+
+            disp(addStu(stu));
+        }
+        setStu({...stu, name : "", age : "", id : ""});
+        // console.log(stu);
+    }
+    let edit = (obj)=>{
+        setStu(obj);
     }
   return (
     <>
@@ -25,10 +35,15 @@ const Student = () => {
 
 
         <div className='row'>
-            <div className='col-md-6 offset-md-3'>
-                <input type='text' onChange={(e)=>setStu({...stu, name : e.target.value})} className='form-control' placeholder='Name'/>
-                <input type='text' onChange={(e)=>setStu({...stu, age : e.target.value})} className='form-control' placeholder='Age'/>
-                <button className='btn btn-primary' onClick={add}>Add</button>
+            <div className='col-md-6 offset-md-3 my-3'>
+                <input type='text' value={stu.name ? stu.name : ""} onChange={(e)=>setStu({...stu, name : e.target.value})} className='form-control' placeholder='Name'/>
+                <br />
+                <input type='text' value={stu.age ? stu.age : ""} onChange={(e)=>setStu({...stu, age : e.target.value})} className='form-control' placeholder='Age'/>
+                <br />
+                <button className='btn btn-primary m-2' onClick={add}>{stu.id ? 'Update' : 'Add' }</button>
+                {
+                    stu.id ? <button className='btn btn-danger m-2' onClick={()=>setStu({...stu, name : "", age : "", id : ""})}>Cancle</button> : ''
+                }
             </div>
         </div>
         <div className="row">
@@ -40,6 +55,7 @@ const Student = () => {
                             <th>Name</th>
                             <th>Age</th>
                             <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +67,7 @@ const Student = () => {
                                         <td>{s.name}</td>
                                         <td>{s.age}</td>
                                         <td><button onClick={()=>remove(s)} className='btn btn-danger'>Delete</button></td>
+                                        <td><button onClick={()=>edit(s)} className='btn btn-info'>Edit</button></td>
                                     </tr>
                                 )
                             })

@@ -5,7 +5,7 @@ import { remove, removeall } from '../../../../redux/CartSlice'
 
 const MyCart = () => {
     let disp = useDispatch();
-    let allItem = useSelector(state=>state);
+    let allItem = useSelector(state=>state.CartSlice);
     let totalPrice = 0;
     let totalDiscount = 0;
     let discountPrice = 0;

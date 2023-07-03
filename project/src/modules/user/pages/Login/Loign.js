@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import {API} from '../../../../constents/ServerApi';
 import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux'
+import { loggedIn } from '../../../../redux/UserAuthSlice'
 
 let loginSchema = Yup.object({
     email : Yup.string().email("Email id is Incorrect").required("Insert Your Email id"),
@@ -14,6 +16,7 @@ let loginSchema = Yup.object({
 const Loign = () => {
 
     let navigate = useNavigate();
+    let disp = useDispatch();
     let cartItem = useSelector(state=>state);
     // useEffect(()=>{
     //     if(localStorage.getItem("token")){
@@ -34,6 +37,7 @@ const Loign = () => {
                 if(result.data.success){
                     let token = result.data.token;
                     localStorage.setItem("token", token);
+                    disp(loggedIn());
                     navigate("/");
                                        
                 }else{

@@ -5,10 +5,17 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers } from '@reduxjs/toolkit'
 import CartSlice from './redux/CartSlice';
+import UserAuthSlice from './redux/UserAuthSlice';
+
+let rootReducer = combineReducers({
+
+  CartSlice, UserAuthSlice
+})
 
 let store = configureStore({
-  reducer : CartSlice
+  reducer : rootReducer
 })
 
 
@@ -22,4 +29,9 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+/*
+  
 
+  
+
+*/
